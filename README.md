@@ -1,6 +1,6 @@
 # YACE Terraform Infrastructure
 
-This repository contains the Terraform configuration for deploying Yet Another CloudWatch Exporter (YACE) on AWS ECS Fargate.
+This repository contains the Terraform configuration for deploying [Yet Another CloudWatch Exporter (YACE)](https://github.com/prometheus-community/yet-another-cloudwatch-exporter/tree/master) on AWS ECS Fargate.
 
 ## Prerequisites
 
