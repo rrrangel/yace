@@ -1,5 +1,13 @@
+# git files
+.git*
+.gitignore
+
 # Local .terraform directories
 **/.terraform/*
+
+# Terraform plan files
+tfplan
+*tfplan*
 
 # .tfstate files
 *.tfstate

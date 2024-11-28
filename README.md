@@ -37,16 +37,46 @@ project/
 
 ### To use this configuration:
 
+- Ensure that you have your AWS configureation set properly (you can verify with the following):
+```
+aws sts get-caller-identity
+```
+- Export the AWS conig to variables to be used
+```
+export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
+export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+export AWS_DEFAULT_REGION=$(aws configure get region)
+```
+
 - Create your YACE configuration file at config/config.yml
 - Create your AWS credentials file at config/credentials
 - Initialize Terraform:
 
 `terraform init`
 
-- Apply the configuration:
+- Apply the configuration (add the variables as needed to ensure that terraform knows what to use):
 
-`terraform plan`
-`terraform apply`
+`terraform plan -var="aws_region=$AWS_DEFAULT_REGION"`  
+`terraform apply -var="aws_region=$AWS_DEFAULT_REGION"`
+
+Or you can run the following:
+
+`
+terraform plan -var="aws_region=$AWS_DEFAULT_REGION" -out=tfplan
+`
+
+and will see something like the following at the end of the plan:
+
+```
+Saved the plan to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan
+```
+
+Then you can run:
+
+`terraform apply tfplan`
 
 After deployment, get the ALB DNS name from the outputs:
 
@@ -71,4 +101,4 @@ docker run -d --rm \
   -v $PWD/config/config.yml:/tmp/config.yml \
   -p 5000:5000 \
   --name yace ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.27.0
-  ```
+```
