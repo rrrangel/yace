@@ -1,0 +1,37 @@
+discovery:
+  jobs:
+  - region: ${AWS_REGION}
+    type: aws/ec2
+    metrics:
+      - name: CPUUtilization
+        statistics:
+        - Average
+        - Maximum
+        period: 300
+        length: 300
+      - name: MemoryUtilization
+        statistics:
+        - Average
+        - Maximum
+        period: 300
+        length: 300
+      - name: StatusCheckFailed
+        statistics:
+        - Sum
+        period: 300
+        length: 300
+      - name: MemoryUsed
+        statistics:
+        - Average
+        period: 300
+        length: 300
+      - name: MemoryAvailable
+        statistics:
+        - Average
+        period: 300
+        length: 300
+    searchTags:
+      - Key: Environment
+        Value: "*"
+    dimensionNameRequirements:
+      - InstanceId
