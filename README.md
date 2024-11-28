@@ -37,7 +37,7 @@ project/
 
 ### To use this configuration:
 
-- Ensure that you have your AWS configureation set properly (you can verify with the following):
+- Ensure that you have your AWS config set properly (you can verify with the following):
 ```
 aws sts get-caller-identity
 ```
